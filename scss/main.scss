@@ -1,0 +1,139 @@
+$primary-color: hsl(47, 88%, 63%);
+$white-color: hsl(0, 0%, 100%);
+$grey-color: hsl(0, 0%, 50%);
+$black-color: hsl(0, 0%, 7%);
+
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
+$font-stack: "Figtree", sans-serif;
+$paragraph-medium: 1rem;
+$paragraph-small: 0.875rem;
+$title-size: 1.5rem;
+
+@mixin set-font-weight($weight) {
+  font-weight: $weight;
+}
+
+@mixin flex-container($direction, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: $primary-color;
+  font-family: $font-stack;
+  line-height: 150%;
+  padding: 9rem 1.5rem;
+  margin: 0 auto;
+
+  .card {
+    @include flex-container(column, 24px);
+    box-shadow: 0.5rem 0.5rem $black-color;
+    background-color: $white-color;
+    border: 1px solid $black-color;
+    border-radius: 20px;
+    padding: 24px;
+
+    &__image {
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    &__content {
+      @include flex-container(column, 12px);
+
+      .card__category {
+        @include set-font-weight(800);
+        font-size: calc($paragraph-small - 0.125rem);
+        background-color: $primary-color;
+        width: fit-content;
+        border-radius: 4px;
+        padding: 4px 12px;
+        color: $black-color;
+      }
+
+      .card__publish-date {
+        @include set-font-weight(500);
+        font-size: calc($paragraph-small - 0.125rem);
+        color: $black-color;
+      }
+
+      .card__title {
+        @include set-font-weight(800);
+        font-size: calc($title-size - 0.25rem);
+      }
+
+      .card__description {
+        @include set-font-weight(500);
+        font-size: calc($paragraph-medium - 0.125rem);
+        color: $grey-color;
+      }
+    }
+
+    &__author {
+      @include flex-container(row, 12px);
+      align-items: center;
+      width: fit-content;
+
+      .card__author-image {
+        width: 32px;
+        height: 32px;
+      }
+
+      .card__author-name {
+        @include set-font-weight(800);
+        font-size: $paragraph-small;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 26rem;
+
+    .card {
+      &__content {
+        .card__category,
+        .card__publish-date {
+          font-size: $paragraph-small;
+        }
+
+        .card__title {
+          font-size: $title-size;
+        }
+
+        .card__description {
+          font-size: $paragraph-medium;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    transition: 0.3s;
+
+    &:hover {
+      box-shadow: 1rem 1rem $black-color;
+
+      .card__title {
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
