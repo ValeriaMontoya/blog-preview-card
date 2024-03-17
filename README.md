@@ -22,7 +22,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor](https://your-solution-url.com)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/blog-preview-card-using-sass-HXmviq6yU_)
 - Live Site URL: [GitHub Pages](https://valeriamontoya.github.io/blog-preview-card/)
 
 ## My process
